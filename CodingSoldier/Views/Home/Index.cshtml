@@ -1,0 +1,83 @@
+﻿@{
+    ViewBag.Title = "Coding Soldier - Boney Johns";
+}
+
+<div class="jumbotron main-header">
+    Hello. Here we discuss tricky fundas, workarounds, POCs and other small projects that helped us in both learning and solving problems.
+</div>
+<div class="row" style="margin-bottom:25px;">
+    <div class="col-md-12">
+        Continuous learning is a must for any developer so that he/she continues to excel in the field they are working on.
+        New technologies keep evolving that we need to get our hands on. At the same time there will be areas that we haven’t touched for some time and hence forgotten them.<br />
+        Basics are a must that we need to be certain of always.
+        So developers need to be sharp always in sense they keep learning all the time. Usually learning is complete with practicing or coding.
+        Here I’m writing posts about the various funda’s which have helped me in solving issues or that are subtle that we don’t get it the first time.<br/>
+        Also I have shared documentations which are my study documents, which helpd me revise quickly in case I have forgotten that I have studied or worked upon before.
+        In this page, I’m adding some questions which should give you an idea about the <a href="/posts/">posts</a> and <a href="/studies/">studies</a> that I have in this site.
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <span>C# .Net</span>
+        <ol>
+            <li>
+                This one may sound way too naive, unless you have really thought about it.
+                class A {}
+                void Main {A ob = new A();}
+                what is ob?
+            </li>
+            <li>
+                String is a Reference type right? If so, will the value string variable change reflect if it is passed as a parameter to a method,
+                without the 'ref' keyword? Why ?
+                void Main()
+                {
+                string a = "hello";
+                ChangeValue(a);
+                Console.WriteLine(a);
+                }
+                void ChangeValue(string input)
+                {
+                input = "hi";
+                }
+            </li>
+            <li>
+                Provide an instance where decorator pattern is used in Dot Net Framework Library ?
+            </li>
+            <li>
+                Dictionary or HashTable is faster? Why ?
+            </li>
+            <li>
+                What is method inlining ?
+            </li>
+            <li>
+                What is meant by coding against interfaces ?
+            </li>
+        </ol>
+    </div>
+    <div class="col-md-4">
+        <span>Asp.Net</span>
+        <ol>
+            <li>
+                You have an Aspx page.<br /> Page has textbox control and a button control.<br />
+                You have viewstate turned off for the page and the textbox control.<br />
+                Page loads the first time. You enter some text into the textbox and you click submit button.<br />
+                After the page posts back, will the text entered in the textbox be retained or not?
+            </li>
+            <li>
+                Will a datasource control, whose state needs to be maitained work without viewstate?
+            </li>
+        </ol>
+    </div>
+    <div class="col-md-4">
+        <span>JavaScript</span>
+        <ol>
+            <li>
+                What is the coolest thing you like about Angular JS ?
+            </li>
+            <li>
+                How is Javascript different from C# in the way we code?
+            </li>
+        </ol>
+    </div>
+</div>

@@ -1,0 +1,28 @@
+﻿@model IdentityRole
+@{
+    ViewBag.Title = "Create Role";
+}
+ 
+<h2>Create Role</h2>
+ 
+<style type="text/css">
+    #tbrole, .c {
+        border: double;
+    }
+</style>
+ 
+ 
+@using (Html.BeginForm())
+{
+    <table id="tbrole">
+        <tr>
+            <td>Enter Role Name To be Created:</td>
+            <td>
+                @Html.EditorFor(m => m.Name)
+            </td>
+        </tr>
+    </table><br/>
+    <input type="submit" value="Create Role" />
+}
+<br/>
+@Html.ActionLink("Back to Roles List", "index", "roles")

@@ -1,0 +1,85 @@
+﻿First Way:
+######################################################################################
+FROM microsoft/aspnetcore-build:2.0 AS build-env
+WORKDIR /app
+
+# Copy csproj and restore as distinct layers
+COPY *.csproj ./
+RUN dotnet restore
+
+# Copy everything else and build
+COPY . ./
+RUN dotnet publish -c Release -o out
+
+
+# Build runtime image
+FROM microsoft/aspnetcore:2.0
+WORKDIR /app
+COPY --from=build-env /app/out .
+ENTRYPOINT ["dotnet", "CodingSoldier.dll"]
+#######################################################################################
+
+bjohns@671201519NB001 MINGW64 /c/users/bjohns/source/repos/CodingSoldier/CodingSoldier
+$ docker build -t codingsoldierwebapp .
+Sending build context to Docker daemon  2.749MB
+Step 1/10 : FROM microsoft/aspnetcore-build:2.0 AS build-env
+ ---> e4e43a027c0b
+Step 2/10 : WORKDIR /app
+ ---> Using cache
+ ---> cf10939b7fce
+Step 3/10 : COPY *.csproj ./
+ ---> Using cache
+ ---> a6c93cc42921
+Step 4/10 : RUN dotnet restore
+ ---> Using cache
+ ---> dec81a2cdd0b
+Step 5/10 : COPY . ./
+ ---> f662d9f25796
+Step 6/10 : RUN dotnet publish -c Release -o out
+ ---> Running in 21c1dfb6c933
+Microsoft (R) Build Engine version 15.7.177.53362 for .NET Core
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Restore completed in 656.51 ms for /app/CodingSoldier.csproj.
+  Restore completed in 317.77 ms for /app/CodingSoldier.csproj.
+  CodingSoldierInCoreAndDocker -> /app/bin/Release/netcoreapp2.0/CodingSoldierIn
+CoreAndDocker.dll
+  CodingSoldierInCoreAndDocker -> /app/out/
+ ---> c0b3b7af65af
+Removing intermediate container 21c1dfb6c933
+Step 7/10 : FROM microsoft/aspnetcore:2.0
+ ---> cdc2d48122e4
+Step 8/10 : WORKDIR /app
+ ---> 554ebc79c392
+Removing intermediate container 6550ea22f98c
+Step 9/10 : COPY --from=build-env /app/out .
+ ---> 689518440008
+Step 10/10 : ENTRYPOINT dotnet CodingSoldier.dll
+ ---> Running in e4c33182c436
+ ---> 76ed2e58f1e1
+Removing intermediate container e4c33182c436
+Successfully built 76ed2e58f1e1
+Successfully tagged codingsoldierwebapp:latest
+SECURITY WARNING: You are building a Docker image from Windows against a non-Win
+dows Docker host. All files and directories added to build context will have '-r
+wxr-xr-x' permissions. It is recommended to double check and reset permissions f
+or sensitive files and directories.
+
+
+
+
+
+
+bjohns@671201519NB001 MINGW64 /c/users/bjohns/source/repos/CodingSoldier/CodingSoldier
+$ docker images
+REPOSITORY                    TAG                 IMAGE ID            CREATED
+          SIZE
+codingsoldierwebapp           latest              76ed2e58f1e1        6 seconds
+ago       365MB
+
+
+
+
+bjohns@671201519NB001 MINGW64 /c/users/bjohns/source/repos/CodingSoldier/CodingSoldier
+$ docker run -d -p 8080:2350 --name myapp codingsoldierwebapp
+485913b59c5d6d25e72203fbeed21bc27b20f16063e4dc92265d14d3ed991de8

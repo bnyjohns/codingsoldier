@@ -1,0 +1,28 @@
+﻿@model IEnumerable<CodingSoldier.Models.StudyViewModel>
+
+    @{
+        ViewBag.Title = "Studies - Search";
+    }
+
+    <div>
+        <b>Search Results for:</b> "@ViewBag.SearchText"
+    </div>
+    <br />
+
+    <div>
+        @if (Model.Any())
+        {
+            <ol>
+                @foreach (var item in Model)
+                {
+                    <li>@Html.ActionLink(item.StudyHeader, "Index", new { studyHeader = item.StudyHeader })</li>
+                }
+            </ol>
+        }
+        else
+        {
+            <p>No results found!</p>
+        }
+
+    </div>
+

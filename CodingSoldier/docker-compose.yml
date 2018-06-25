@@ -1,0 +1,16 @@
+﻿version: '3'
+
+services:
+  codingsoldier:
+    image: codingsoldier
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+      - "80"
+networks:
+  default:
+    external:
+      name: nat

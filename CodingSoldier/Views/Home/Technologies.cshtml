@@ -1,0 +1,24 @@
+﻿
+@{
+    ViewBag.Title = "Technologies Used - Coding Soldier";
+}
+
+<h2>Technologies Used:</h2>
+<ul>
+    @foreach (var technology in ViewBag.technologies)
+    {
+        <li>@technology</li>
+    }
+</ul>
+<br/>
+<h2>Patterns and Practices Followed:</h2>
+<ul>
+    @foreach (var pp in ViewBag.patternsAndPractices)
+    {
+        <li>@pp</li>
+    }
+</ul>
+
+
+
+

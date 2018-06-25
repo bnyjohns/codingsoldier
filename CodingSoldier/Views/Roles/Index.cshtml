@@ -1,0 +1,22 @@
+﻿@model IEnumerable<IdentityRole>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Available Roles For Application</h2><br/>
+
+
+<b>Role Name</b>
+<ul>
+    @foreach (var item in Model)
+    {
+        <li>
+            @item.Name
+        </li>
+    }
+</ul>
+
+@Html.ActionLink("Create Role", "Create", "Roles")
+
+
+
