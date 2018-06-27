@@ -83,3 +83,13 @@ ago       365MB
 bjohns@671201519NB001 MINGW64 /c/users/bjohns/source/repos/CodingSoldier/CodingSoldier
 $ docker run -d -p 8080:2350 --name myapp codingsoldierwebapp
 485913b59c5d6d25e72203fbeed21bc27b20f16063e4dc92265d14d3ed991de8
+###############################################################################################
+
+Second way:
+###############################################################################################
+FROM microsoft/aspnetcore
+COPY ./bin/Debug/netcoreapp2.0/publish .
+ENTRYPOINT ["dotnet", "CodingSoldier.dll"]
+###############################################################################################
+$ docker build -t myapp .
+$ docker run -d -p 8000:80 myapp
