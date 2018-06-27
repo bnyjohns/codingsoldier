@@ -1,16 +1,19 @@
 ﻿version: '3'
 
 services:
-  codingsoldier:
-    image: codingsoldier
+  website:
     build:
       context: .
       dockerfile: Dockerfile
     environment:
       - ASPNETCORE_ENVIRONMENT=Production
+    expose:
+      - "2350"
+  reverseproxy:
+    build:
+      context: .
+      dockerfile: NginxDockerfile
+    links:
+      - website
     ports:
-      - "2350:2350"
-  nginx:
-    image: nginx
-    ports:
-      - "80:2350"
+      - "8080:80"
