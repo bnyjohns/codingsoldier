@@ -4,7 +4,7 @@
     ViewBag.Title = "Posts - Boney Johns";
 }
 
-<h2>Posts</h2>
+<h2>Posts</h2><br/>
 @if (User.IsInRole("Admin"))
 {
     <p>
@@ -14,8 +14,8 @@
 @foreach (var item in Model)
 {
         <div class="row">
-        <div class="col-md-4">
-            <b>@Html.Raw(item.PostTitle)</b>
+        <div class="col-md-8">
+            <b style="font-size:18px">@Html.Raw(item.PostTitle)</b>
             @if (User.IsInRole("Admin"))
             {
                 <text>(</text>
@@ -24,15 +24,22 @@
                 <text>)</text>
             }
             <br />
-            <i>Tags: @Html.Raw(item.Tags)</i>
         </div>
     </div>
-    <div class="row">
+    <div class="row">        
         <div class="col-md-4 col-lg-12 col-sm-2">
-            <pre>@Html.Raw(item.PostContent)</pre>
+            @if (!string.IsNullOrEmpty(item.PostUrl))
+            {
+                <pre style="white-space:pre-wrap">@Html.Raw(item.PostContent)</pre>
+                <a target="_blank" style="font-weight:600" href="@item.PostUrl">READ MORE</a>                
+            }
+            else
+            {
+                <pre style="white-space:pre-wrap">@Html.Raw(item.PostContent)</pre>
+            }            
         </div>
     </div>
-    <div class="row" style="margin-top:5px">
+    <div class="row" style="margin-top:50px">
     </div>
 }
 <paging current-index="@Model.PageIndex" total-page-count="@Model.TotalPages" paging-url="/posts"></paging>

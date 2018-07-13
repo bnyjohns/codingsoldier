@@ -25,6 +25,14 @@
         </div>
 
         <div class="form-group">
+            @Html.LabelFor(model => model.PostUrl, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.PostUrl, new { @class = "textBoxHeader" })
+                @Html.ValidationMessageFor(model => model.PostUrl)
+            </div>
+        </div>
+
+        <div class="form-group">
             @Html.LabelFor(model => model.PostContent, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.TextAreaFor(model => model.PostContent, new { @class = "textAreaContent" })

@@ -21,13 +21,10 @@ namespace CodingSoldier.Controllers
         protected readonly IUnitOfWork _uow;
         protected readonly IRepository<Model> _modelRepository;
         protected readonly IRepository<Category> _categoryRepository;
-        private const int pageSize = 2;
 
         public BaseController(IUnitOfWork uow)
         {
-            if (uow == null)
-                throw new ArgumentNullException(nameof(uow));
-            _uow = uow;
+            _uow = uow ?? throw new ArgumentNullException(nameof(uow));
 
             _modelRepository = _uow.Repository<Model>();
             _categoryRepository = _uow.Repository<Category>();
@@ -37,7 +34,7 @@ namespace CodingSoldier.Controllers
         public async virtual Task<ActionResult> Index(int page = 1, int pageSize = 2, string header = null)
         {            
             var modelList = await _modelRepository.GetAllAsync();
-            modelList = modelList.OrderBy(m => m.Id);
+            modelList = modelList.OrderByDescending(m => m.Id);
             var model = new PaginatedList<Model>(modelList, page, pageSize);
             var viewModel = Mapper.Map<PaginatedList<ViewModel>>(model);
             viewModel.PageIndex = model.PageIndex;

@@ -7,6 +7,7 @@ namespace CodingSoldier.Core.Entities
         public int Id { get; set; }
         [Required]
         public string PostTitle { get; set; }
+        public string PostUrl { get; set; }
         [Required]
         public string PostContent { get; set; }
         [Required]

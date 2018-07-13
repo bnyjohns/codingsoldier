@@ -5,7 +5,7 @@
     var model = Model as PaginatedList<CodingSoldier.Models.StudyViewModel>;
 }
 
-<h3>Studies</h3>
+<h2>Studies</h2>
 
 @if (User.IsInRole("Admin"))
 {
@@ -16,38 +16,42 @@
 
 @if (model != null)
 {
-    <div style="float:right">
-        @using (Html.BeginForm("Search", "Studies", FormMethod.Post))
-        {
-            @Html.TextBox("title", "", new { placeholder = "enter the search text!" })
-            <input type="submit" title="Search" value="Search" />
-        }
-    </div>
-}
-
-@foreach (var item in Model)
-{
-    <div class="row">
-        <div class="col-md-4">
-            <b>@Html.Raw(item.StudyHeader)</b>
-            @if (User.IsInRole("Admin"))
+    <div class="row" style="float:right">
+        <div class="col-md-12">
+            @using (Html.BeginForm("Search", "Studies", FormMethod.Post))
             {
-                <text>(</text>
-                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) <text>|</text>
-                @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { onclick = "return confirm('Are you sure you wish to delete this study?');" })
-                <text>)</text>
+                @Html.TextBox("title", "", new { placeholder = "enter the search text!" })
+                <input type="submit" title="Search" value="Search" />
             }
-            <br />
-            <i>Category: @item.CategoryName</i>
-        </div>        
-    </div>
-    <div class="row">
-        <div class="col-md-4 col-lg-12 col-sm-2">
-            <pre>@Html.Raw(item.StudyContent)</pre>
         </div>
     </div>
-    <div class="row" style="margin-top:5px">
-    </div>
 }
-
+<div class="row">
+    <div class="col-md-12">
+        @foreach (var item in Model)
+        {
+            <div class="row">
+                <div class="col-md-8">
+                    <b style="font-size:18px">@Html.Raw(item.StudyHeader)</b>
+                    @if (User.IsInRole("Admin"))
+                {
+                        <text>(</text>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }) <text>|</text>
+                        @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { onclick = "return confirm('Are you sure you wish to delete this study?');" })
+                        <text>)</text>
+                    }
+                    @*<br />*@
+                    @*<i>Category: @item.CategoryName</i>*@
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 col-lg-12 col-sm-2">
+                    <pre>@Html.Raw(item.StudyContent)</pre>
+                </div>
+            </div>
+            <div class="row" style="margin-top:50px">
+            </div>
+        }
+    </div>
+</div>
 <paging current-index="@Model.PageIndex" total-page-count="@Model.TotalPages" paging-url="/studies"></paging>

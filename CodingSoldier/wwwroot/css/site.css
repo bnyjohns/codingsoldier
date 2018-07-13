@@ -63,7 +63,14 @@ input[type="checkbox"].input-validation-error {
 }
 
 pre {
-    white-space: pre-wrap
+    white-space: pre-wrap !important;
+    font: 15px Roboto, sans-serif;
+    color: #757575;
+}
+
+pre > a {
+    text-decoration: none;
+    color: #2196f3;
 }
 
 

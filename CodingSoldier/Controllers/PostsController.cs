@@ -1,6 +1,8 @@
 ﻿using CodingSoldier.Core.Entities;
 using CodingSoldier.Models;
 using CodingSoldier.Core.UnitOfWork;
+using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
 
 namespace CodingSoldier.Controllers
 {
@@ -9,6 +11,11 @@ namespace CodingSoldier.Controllers
         public PostsController(IUnitOfWork uow) : base(uow)
         {            
 
-        }        
+        }
+        public override Task<ActionResult> Index(int page = 1, int pageSize = 3, string header = null)
+        {
+            return base.Index(page, pageSize, header);
+        }
+
     }
 }

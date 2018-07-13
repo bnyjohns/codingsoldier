@@ -22,7 +22,7 @@ namespace CodingSoldier.Controllers
 
         public ActionResult Technologies()
         {
-            var technologies = @"ASP.NET Core 2.0,EF Core,AutoMapper,EF Identity,BootStrap,Attribute Based Routing";
+            var technologies = @"ASP.NET Core 2.0,EF Core,AutoMapper,EF Identity,BootStrap,Attribute Based Routing, Nginx";
 
             var patternsAndPractices = @"UnitOfWork Pattern,Repository Pattern, CodeFirst Migration,BaseControllers using Generics";
 

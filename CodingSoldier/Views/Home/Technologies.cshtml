@@ -2,8 +2,16 @@
 @{
     ViewBag.Title = "Technologies Used - Coding Soldier";
 }
+<h2>CodingSoldier History:</h2>
+<ul>
+    <li>Website was initially developed in Asp.Net MVC with SQL server as database and deployed in IIS.</li>
+    <li>Later it was migrated to Node with Express and MongoDB as database.</li>
+    <li>Again it was migrated to Node with React and MongoDB as database.</li>
+    <li>And finally migrated to Asp.Net Core with SQL Lite as database, hosted in a Linux instance on Kestrel server and Nginx as Reverse Proxy.</li>
+</ul>
+<br/>
 
-<h2>Technologies Used:</h2>
+<h2>Technologies currently used for CodingSoldier:</h2>
 <ul>
     @foreach (var technology in ViewBag.technologies)
     {
@@ -11,7 +19,7 @@
     }
 </ul>
 <br/>
-<h2>Patterns and Practices Followed:</h2>
+<h2>Patterns and Practices followed in CodingSoldier:</h2>
 <ul>
     @foreach (var pp in ViewBag.patternsAndPractices)
     {

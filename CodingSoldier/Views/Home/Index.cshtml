@@ -3,17 +3,23 @@
 }
 
 <div class="jumbotron main-header">
-    Hello. Here we discuss tricky fundas, workarounds, POCs and other small projects that helped us in both learning and solving problems.
+    Hi there! This is <a href="/home/about/boney-johns" target="_blank">Boney</a>. In this website I'm putting forward my blog posts and studies on various technologies. Hope it would be of some help to you guys.
 </div>
-<div class="row" style="margin-bottom:25px;">
+<div class="row" style="margin-bottom:15px;">
     <div class="col-md-12">
-        Continuous learning is a must for any developer so that he/she continues to excel in the field they are working on.
-        New technologies keep evolving that we need to get our hands on. At the same time there will be areas that we haven’t touched for some time and hence forgotten them.<br />
-        Basics are a must that we need to be certain of always.
-        So developers need to be sharp always in sense they keep learning all the time. Usually learning is complete with practicing or coding.
-        Here I’m writing posts about the various funda’s which have helped me in solving issues or that are subtle that we don’t get it the first time.<br/>
-        Also I have shared documentations which are my study documents, which helpd me revise quickly in case I have forgotten that I have studied or worked upon before.
-        In this page, I’m adding some questions which should give you an idea about the <a href="/posts/">posts</a> and <a href="/studies/">studies</a> that I have in this site.
+        Continuous learning is a must for any developer so that the person stays updated to the latest technologies.
+        New technologies keep coming up all the time. We we need to get our hands our hands dirty in them. At the same time there will be areas that we haven’t touched for some time and hence have forgotten.<br />
+        Basics is the foundation. We need to get it right, because based on basics only we build forward.
+        After learning about a topic from a blog/book, we need to do prototyping, teach someone or create a documentation for self reference so that the concept stays clear.
+        Here I’m writing <a target="_blank" href="/posts/">posts</a> about the various topics that I have learned over time.
+        Also I'm sharing my <a target="_blank" href="/studies/">studies</a>, which helps me in quick revision of concepts or 
+        command in case I have forgotten it over time.
+    </div>
+</div>
+
+<div class="row" style="margin-bottom:15px;">
+    <div class="col-md-12">
+        <span>Some food for thought: :)</span>
     </div>
 </div>
 
@@ -56,7 +62,7 @@
         </ol>
     </div>
     <div class="col-md-4">
-        <span>Asp.Net</span>
+        <span>ASP.Net</span>
         <ol>
             <li>
                 You have an Aspx page.<br /> Page has textbox control and a button control.<br />
@@ -65,7 +71,10 @@
                 After the page posts back, will the text entered in the textbox be retained or not?
             </li>
             <li>
-                Will a datasource control, whose state needs to be maitained work without viewstate?
+                In which environment would an ASP.Net Core site run fast? In a Linux server or in a Windows server ?
+            </li>
+            <li>
+                How is the request pipeline of ASP.Net Core different from previous site versions of ASP.Net ?
             </li>
         </ol>
     </div>
@@ -73,10 +82,28 @@
         <span>JavaScript</span>
         <ol>
             <li>
-                What is the coolest thing you like about Angular JS ?
+                What feature in JavaScript makes currying possible ?
             </li>
             <li>
-                How is Javascript different from C# in the way we code?
+                What exactly is "__proto" property of an object ?
+            </li>
+            <li>
+                Lexial scoping and closure both are in play here. What would be the value printed out to console ?
+
+                function outerFunc(){
+                var a = 1;
+                var printA = function(){
+                console.log(a);
+                }
+                var incrementA = function(){
+                a++;
+                }
+                return {printA, incrementA};
+                }
+
+                let {printA, incrementA} = outerFunc();
+                incrementA();
+                printA();                
             </li>
         </ol>
     </div>

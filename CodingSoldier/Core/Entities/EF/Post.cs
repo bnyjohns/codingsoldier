@@ -16,6 +16,7 @@ namespace CodingSoldier.Core.Entities
     {
         public int Id { get; set; }
         public string PostTitle { get; set; }
+        public string PostUrl { get; set; }
         public string PostContent { get; set; }
         public bool IsAQuestion { get; set; }
         public string Tags { get; set; }
