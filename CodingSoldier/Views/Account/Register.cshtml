@@ -28,7 +28,7 @@
             </div>
             <div class="form-group">
                 @Html.Label(null, "Select Your User Role")<br/>
-                @Html.DropDownListFor(m => m.Role, ((IEnumerable<SelectListItem>)ViewData["Roles"]))
+                <select asp-for="Role" asp-items="@ViewBag.Roles"></select>
                 @Html.ValidationMessageFor(m => m.Role)                
             </div>
             <div class="form-group">

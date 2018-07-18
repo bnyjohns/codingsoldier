@@ -42,7 +42,7 @@ namespace CodingSoldier.Controllers
             _roleRepository = uow.Repository<IdentityRole>();
         }
 
-        [TempData]
+        //[TempData]
         public string ErrorMessage { get; set; }
 
         [HttpGet]
@@ -50,7 +50,7 @@ namespace CodingSoldier.Controllers
         public async Task<IActionResult> Login(string returnUrl = null)
         {
             // Clear the existing external cookie to ensure a clean login process
-            await HttpContext.SignOutAsync(IdentityConstants.ExternalScheme);
+            //await HttpContext.SignOutAsync(IdentityConstants.ExternalScheme);
 
             ViewData["ReturnUrl"] = returnUrl;
             return View();
@@ -215,7 +215,7 @@ namespace CodingSoldier.Controllers
         {
             ViewData["ReturnUrl"] = returnUrl;
             var roles = await _roleRepository.GetAllAsync();
-            ViewData["Roles"] = new SelectList(roles, "Name", "Name");
+            ViewBag.Roles = new SelectList(roles, "Name", "Name");
             return View();
         }
 
@@ -243,6 +243,9 @@ namespace CodingSoldier.Controllers
                 }
                 AddErrors(result);
             }
+
+            var roles = await _roleRepository.GetAllAsync();
+            ViewBag.Roles = new SelectList(roles, "Name", "Name");
 
             // If we got this far, something failed, redisplay form
             return View(model);
