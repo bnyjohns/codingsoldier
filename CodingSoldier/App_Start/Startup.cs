@@ -12,6 +12,7 @@ using CodingSoldier.Core.UnitOfWork;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
 
 namespace CodingSoldier.App_Start
 {
@@ -82,7 +83,7 @@ namespace CodingSoldier.App_Start
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
             Seeder.Seed();
             AutoMapperConfig.ConfigureAutoMapper();
@@ -96,6 +97,8 @@ namespace CodingSoldier.App_Start
                 app.UseExceptionHandler("/Home/Error");
             }
 
+            loggerFactory.AddLambdaLogger(Configuration.GetLambdaLoggerOptions());
+
             app.UseStaticFiles();
 
             app.UseAuthentication();
@@ -105,6 +108,17 @@ namespace CodingSoldier.App_Start
                 routes.MapRoute(
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
+            });
+
+            app.UseMvc(routes =>
+            {
+                routes.MapRoute(
+                    name: "certifications",
+                    template: "{controller=Certifications}/{fileName?}",
+                    defaults: new
+                    {
+                        Action = "Index"
+                    });
             });
         }
     }

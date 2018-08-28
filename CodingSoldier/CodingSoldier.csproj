@@ -8,7 +8,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="wwwroot\" />
+    <Content Update="wwwroot\lib\**\*.*" CopyToPublishDirectory="Never" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Amazon.Lambda.AspNetCoreServer" Version="2.0.0" />

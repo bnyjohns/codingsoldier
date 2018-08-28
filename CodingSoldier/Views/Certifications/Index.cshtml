@@ -1,0 +1,14 @@
+﻿@{
+    ViewBag.Title = "Certifications";
+}
+
+<h2>Certifications:</h2><br />
+
+<ul>
+    @foreach (var cert in ViewBag.Certifications)
+    {
+        <li>
+            <a href="/certifications/@cert.UrlPath" target="_blank">@cert.Name</a>
+        </li>
+    }
+</ul>

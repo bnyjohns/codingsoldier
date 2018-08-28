@@ -12,7 +12,8 @@ namespace CodingSoldier
         protected override void Init(IWebHostBuilder builder)
         {
             builder
-                .UseStartup<Startup>();
+                .UseStartup<Startup>()
+                .UseApiGateway();
         }
     }
 }
