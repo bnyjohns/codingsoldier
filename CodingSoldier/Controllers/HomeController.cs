@@ -2,6 +2,7 @@
 using CodingSoldier.Models;
 using Microsoft.AspNetCore.Mvc;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Threading.Tasks;
 
@@ -17,6 +18,7 @@ namespace CodingSoldier.Controllers
         public ActionResult About()
         {            
             ViewBag.Me = Constants.Me;
+            ViewBag.Certifications = Certification.GetCertifications();
             return View();
         }
 
