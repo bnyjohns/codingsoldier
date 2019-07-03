@@ -12,7 +12,7 @@ namespace CodingSoldier.ApiControllers
     [Route("api/[controller]")]
     public class StudiesController : BaseApiController<Study, StudyApiEntity>
     {
-        public StudiesController(IUnitOfWork uow) : base(uow)
+        public StudiesController(IUnitOfWork uow, IMapper mapper) : base(uow, mapper)
         {
 
         }               

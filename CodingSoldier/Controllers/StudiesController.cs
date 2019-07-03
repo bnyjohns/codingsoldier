@@ -12,8 +12,8 @@ namespace CodingSoldier.Controllers
 {
     public class StudiesController : BaseController<Study, StudyViewModel>
     {
-        public StudiesController(IUnitOfWork uow) :
-            base(uow)
+        public StudiesController(IUnitOfWork uow, IMapper mapper) :
+            base(uow, mapper)
         {
 
         }
@@ -25,7 +25,7 @@ namespace CodingSoldier.Controllers
                 var studies = await _modelRepository.GetAllAsync();
                 var result = studies.Where(m => m.StudyHeader == studyHeader);
                 var paginatedResult = new PaginatedList<Study>(result, page, pageSize);
-                var viewModel = Mapper.Map<PaginatedList<StudyViewModel>>(result);
+                var viewModel = _mapper.Map<PaginatedList<StudyViewModel>>(result);
                 viewModel.PageIndex = paginatedResult.PageIndex;
                 viewModel.TotalPages = paginatedResult.TotalPages;
                 return View(viewModel);
@@ -43,7 +43,7 @@ namespace CodingSoldier.Controllers
             var studies = _modelRepository as IRepository<Study>;
             var searchedStudies = await studies.GetAllAsync();
             var result = searchedStudies.Where(s => s.StudyHeader.Contains(title) || s.StudyContent.Contains(title));
-            var viewModel = Mapper.Map<List<StudyViewModel>>(result);
+            var viewModel = _mapper.Map<List<StudyViewModel>>(result);
             return View(viewModel);
         }
     }

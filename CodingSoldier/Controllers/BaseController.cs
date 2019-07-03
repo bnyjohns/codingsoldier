@@ -21,13 +21,16 @@ namespace CodingSoldier.Controllers
         protected readonly IUnitOfWork _uow;
         protected readonly IRepository<Model> _modelRepository;
         protected readonly IRepository<Category> _categoryRepository;
+        protected readonly IMapper _mapper;
 
-        public BaseController(IUnitOfWork uow)
+        public BaseController(IUnitOfWork uow, IMapper mapper)
         {
             _uow = uow ?? throw new ArgumentNullException(nameof(uow));
 
             _modelRepository = _uow.Repository<Model>();
             _categoryRepository = _uow.Repository<Category>();
+
+            _mapper = mapper;
         }        
 
         [AllowAnonymous]
@@ -36,7 +39,7 @@ namespace CodingSoldier.Controllers
             var modelList = await _modelRepository.GetAllAsync();
             modelList = modelList.OrderByDescending(m => m.Id);
             var model = new PaginatedList<Model>(modelList, page, pageSize);
-            var viewModel = Mapper.Map<PaginatedList<ViewModel>>(model);
+            var viewModel = _mapper.Map<PaginatedList<ViewModel>>(model);
             viewModel.PageIndex = model.PageIndex;
             viewModel.TotalPages = model.TotalPages;
             return View(viewModel);
@@ -68,7 +71,7 @@ namespace CodingSoldier.Controllers
 
             if (ModelState.IsValid)
             {
-                var model = Mapper.Map<Model>(viewModel);
+                var model = _mapper.Map<Model>(viewModel);
                 await _modelRepository.AddAsync(model);
             }
             return View(viewModel);
@@ -77,7 +80,7 @@ namespace CodingSoldier.Controllers
         public async virtual Task<ActionResult> Edit(int id)
         {
             var model = await _modelRepository.GetAsync(m => m.Id == id);
-            var viewModel = Mapper.Map<ViewModel>(model);
+            var viewModel = _mapper.Map<ViewModel>(model);
             viewModel.Categories = await GetAllCategories();
             return View(viewModel);
         }       
@@ -91,7 +94,7 @@ namespace CodingSoldier.Controllers
 
             if (ModelState.IsValid)
             {
-                var model = Mapper.Map<Model>(viewModel);
+                var model = _mapper.Map<Model>(viewModel);
                 await _modelRepository.UpdateAsync(model);
             }
             return View(viewModel);

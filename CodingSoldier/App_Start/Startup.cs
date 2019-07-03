@@ -13,6 +13,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
+using AutoMapper;
 
 namespace CodingSoldier.App_Start
 {
@@ -30,6 +31,7 @@ namespace CodingSoldier.App_Start
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+            services.AddAutoMapper(typeof(MappingProfile));
             services.AddDbContext<CodingSoldierDbContext>();
             services.AddDbContext<IdentityDbContext<ApplicationUser>>(OptionsAction);
             services.AddScoped<IUnitOfWork, UnitOfWork>();
@@ -86,7 +88,6 @@ namespace CodingSoldier.App_Start
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
             Seeder.Seed();
-            AutoMapperConfig.ConfigureAutoMapper();
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

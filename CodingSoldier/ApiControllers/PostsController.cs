@@ -12,7 +12,7 @@ namespace CodingSoldier.ApiControllers
     [Route("api/[controller]")]
     public class PostsController : BaseApiController<Post, PostApiEntity>
     {
-        public PostsController(IUnitOfWork uow) : base(uow)
+        public PostsController(IUnitOfWork uow, IMapper mapper) : base(uow, mapper)
         {
            
         }

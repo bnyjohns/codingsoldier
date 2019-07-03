@@ -20,22 +20,25 @@ namespace CodingSoldier.ApiControllers
                                                                where TEntity: IApiEntity
     {
         protected readonly IUnitOfWork _uow;
+        private IMapper _mapper { get; set; }
         protected readonly IRepository<TModel> _modelRepository;
 
-        public BaseApiController(IUnitOfWork uow)
+        public BaseApiController(IUnitOfWork uow, IMapper mapper)
         {
             if (uow == null)
                 throw new ArgumentNullException(nameof(uow));
             _uow = uow;
 
             _modelRepository = _uow.Repository<TModel>();
+
+            _mapper = mapper;
         }
 
         [AllowAnonymous]
         public async virtual Task<List<TEntity>> GetAll()
         {
             var entities = await _modelRepository.GetAllAsync();
-            return Mapper.Map<List<TEntity>>(entities);
+            return _mapper.Map<List<TEntity>>(entities);
         }
 
         [AllowAnonymous]
@@ -47,7 +50,7 @@ namespace CodingSoldier.ApiControllers
             {
                 return NotFound();
             }
-            var modelEntity = Mapper.Map<TEntity>(model);
+            var modelEntity = _mapper.Map<TEntity>(model);
             return Ok(modelEntity);
         }
 

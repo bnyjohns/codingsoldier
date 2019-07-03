@@ -3,12 +3,13 @@ using CodingSoldier.Models;
 using CodingSoldier.Core.UnitOfWork;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
+using AutoMapper;
 
 namespace CodingSoldier.Controllers
 {
     public class PostsController : BaseController<Post, PostViewModel>
     {
-        public PostsController(IUnitOfWork uow) : base(uow)
+        public PostsController(IUnitOfWork uow, IMapper mapper) : base(uow, mapper)
         {            
 
         }
