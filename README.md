@@ -1,5 +1,4 @@
-# codingsoldier_aspnetcore_version2
+# codingsoldier
 
-coding soldier in Asp.Net core
+coding soldier in ASP.NET Core 2.2
 SQL server DB migrated to SQLite
-Docker support
