@@ -1,91 +1,107 @@
 ﻿@{
     ViewBag.Title = ViewBag.Me;
 }
-<h3 style="font-weight:400">@ViewBag.Title</h3>
 
 <fieldset>
-    <p>
-        I'm from Kerala, India. Currently working as Senior Software Engineer at Logitech, in Chennai,India. Technical expertise primarily in Microsoft Technologies and JavaScript.
-        I have an overall working experience of 9 years.
-    </p>
-    <p>
-        I got my Bacherlor's degree in Engineering in the year 2009. My first company was Verizon, where I got recruited as part of the college campus placement.
-        Since then I have been working in IT. 3 years in Verizon, 4 years in SolarWinds and currently working in Logitech since the last 2 years.
-        I have been predominantly working in Microsoft Technology Stack. I would say I have been part of the DotNet evolution. I have worked from DotNet Framework 1.1 in
-        VS 2003 to DotNet Core 2.0 in VS 2017. It feels like a long journey.
-        I have also been working in JavaScript, specifically Node.js. Initially I was skeptical about JavaScript, but fell in love with it later.
-        And I strongly feel the reason DotNet evolved the way it has, is because of the way JavaScript took over the market for its simplicity,
-        flexibility, dynamicity and performance.
-        While working with ASP.Net core I tried it out in Linux. Being a 'Windows' guy mostly, working with Linux was really cool.
-        It helped me a lot while setting up Docker later.
-    </p>
-    <p>
-        I'm passionate towards technology. I learn new technologies pretty fast. The way I learned Node.js, Docker, Linux etc in a short span was such a feel good for me and I'm proud of it.
-        I believe basics are very important. I try to get my basics right before moving on to complex concepts.
-        I have learned that the necessity of asking questions more than ever before. The 6 W's. They help in strong subject understanding.
-        I like troubleshooting issues, but at times it takes time. I take pride in the code I write.
-        I create utility tools that can simplify the work I do. Some of my works are available in BitBucket.
-    </p>
-    <p>
-        They are many people out there whom I look upto for knowledge and inspiration. Some of those guys are so good, that they can explain very complex concepts in such
-        simple and elegant ways. They are so knowledgeable, yet so humble and I always follow/look upto them.
-        Some of my favorite geeks are:
-        <ol>
+    <legend style="font-weight:600">
+        @ViewBag.Title
+    </legend>
+    <ul>
+        <li>Senior Software Engineer working in Logitech</li>
+        <li>Overall work experience of 10+ years</li>
+        <li>Primary technical expertise in C# .NET and JavaScript</li>
+        <li>Secondary technical expertise in Python and C++</li>
+        <li>Experience working in SQL and NoSQL DB's</li>
+        <li>Passionate towards technology</li>
+        <li>Cloud expertise in AWS and Azure</li>
+        <li>Swiftly learns new technologies</li>
+        <li>Curious and asks questions</li>
+        <li>Loves solving problems</li>
+        <li>Takes pride in the code that I write</li>
+        <li>Draws inspiration and learn from the geeks</li>
+        <li>Run marathons and plays badminton</li>
+        <li>Write blogs</li>
+    </ul>
+</fieldset>
+    <br />
+    <fieldset>
+        <legend>Favorite geeks</legend>
+        <ul>
             <li><a href="https://twitter.com/jonskeet" target="_blank">Jon Skeet</a></li>
             <li><a href="http://ericlippert.com/" target="_blank">Eric Lippert</a></li>
             <li><a href="http://odetocode.com/about/scott-allen" target="_blank">Scott Allen</a></li>
             <li><a href="http://www.wintellect.com/devcenter/author/jeffreyr" target="_blank">Jeffrey Richter</a></li>
             <li><a href="https://github.com/getify" target="_blank">Kyle Simpson</a></li>
-        </ol>
-    </p>
-    <p>
-        Apart from coding and technology, my other passion is Sports. I put constant effort to stay healthy and fit. I do running, swimming and play badminton.
-        I do running once in few days and mostly on weekends. Till date, I have run many half marathons and a full marathon.
-        Of late, I have been doing some blogging as well.
-    </p>
-</fieldset>
-<br />
-<fieldset>
-    <legend>Certifications</legend>
-    <ol>
-        @foreach (var cert in ViewBag.Certifications)
-        {
+        </ul>
+    </fieldset>
+    <br />
+    <fieldset>
+        <legend>Favorite books</legend>
+        <ul>
+            <li><a href="https://www.oreilly.com/library/view/clr-via-c/9780735668737/" target="_blank">CLR via C#</a></li>
+            <li><a href="https://csharpindepth.com/" target="_blank">C# in Depth</a></li>
+            <li><a href="https://github.com/getify/You-Dont-Know-JS" target="_blank">You Don't Know JS</a></li>
+            <li><a href="http://shop.oreilly.com/product/9780596007126.do" target="_blank">Head First Design Patterns</a></li>
+        </ul>
+    </fieldset>
+    <br />
+    <fieldset>
+        <legend>Favorite links</legend>
+        <ul>
+            <li><a href="https://www.pluralsight.com/" target="_blank">PluralSight</a></li>
+            <li><a href="https://github.com/donnemartin/system-design-primer" target="_blank">System Design</a></li>
+            <li><a href="https://medium.com/better-programming/10-extraordinary-github-repos-for-all-developers-939cdeb28ad0" target="_blank">GitHub repo collection for developers</a></li>
+        </ul>
+    </fieldset>
+    <br />
+    <fieldset>
+        <legend>Certifications</legend>
+        <ul>
+            @foreach (var cert in ViewBag.Certifications)
+            {
+                <li>
+                    @if (!string.IsNullOrEmpty(cert.ExternalUrl))
+                    {
+                        <a href="@cert.ExternalUrl" target="_blank">@cert.Name</a>
+                    }
+                    else
+                    {
+                        <a href="/certifications/@cert.UrlPath" target="_blank">@cert.Name</a>
+                    }
+                </li>
+            }
+        </ul>
+    </fieldset>
+    <br />
+    <fieldset>
+        <legend>Other places to find me</legend>
+        <ul>
             <li>
-                <a href="/certifications/@cert.UrlPath" target="_blank">@cert.Name</a>
+                <a href="https://www.linkedin.com/in/boneyjohns/" target="_blank">LinkedIn</a>
             </li>
-        }
-    </ol>
-</fieldset>
-<br />
-<fieldset>
-    <legend>Other places to find me</legend>
-    <ol>
-        <li>
-            <a href="https://www.linkedin.com/in/boneyjohns/" target="_blank">LinkedIn</a>
-        </li>
-        <li>
-            <a href="https://bitbucket.org/bnyjohns/" target="_blank">Git</a>
-        </li>
-        <li>
-            <a href="https://stackoverflow.com/users/5933587/boney" target="_blank">StackOverFlow</a>
-        </li>
-        <li>
-            <a href="https://www.hackerrank.com/bnyjohns" target="_blank">HackerRank</a>
-        </li>
-        <li>
-            <a href="http://boneyjohns.blogspot.com/" target="_blank">Blog</a>
-        </li>
-    </ol>
-</fieldset>
-<br />
-<fieldset>
-    <legend>Contact details</legend>
-    <ul>
-        <li>
-            <a href="mailto:bnyjohns@gmail.com">bnyjohns@gmail.com</a>
-        </li>
-        <li>
-            <a href="mailto:bjohns@logitech.com">bjohns@logitech.com</a>
-        </li>
-    </ul>
-</fieldset>
+            <li>
+                <a href="https://github.com/bnyjohns" target="_blank">GitHub</a>
+            </li>
+            <li>
+                <a href="https://stackoverflow.com/users/5933587/boney" target="_blank">StackOverFlow</a>
+            </li>
+            <li>
+                <a href="https://www.hackerrank.com/bnyjohns" target="_blank">HackerRank</a>
+            </li>
+            <li>
+                <a href="http://boneyjohns.blogspot.com/" target="_blank">Personal Blog</a>
+            </li>
+        </ul>
+    </fieldset>
+    <br />
+    <fieldset>
+        <legend>Contact details</legend>
+        <ul>
+            <li>
+                <a href="mailto:bnyjohns@gmail.com">bnyjohns@gmail.com</a>
+            </li>
+            <li>
+                <a href="mailto:bjohns@logitech.com">bjohns@logitech.com</a>
+            </li>
+        </ul>
+    </fieldset>

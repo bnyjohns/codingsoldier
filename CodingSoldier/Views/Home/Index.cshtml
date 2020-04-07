@@ -2,109 +2,59 @@
     ViewBag.Title = "Coding Soldier - Boney Johns";
 }
 
-<div class="jumbotron main-header">
-    Hi there! This is <a href="/home/about/boney-johns" target="_blank">Boney</a>. In this website I'm putting forward my posts and studies on various technologies. Hope it would be of some help to you guys.
-</div>
-<div class="row" style="margin-bottom:15px;">
+<div class="row row-bottom-margin">
     <div class="col-md-12">
-        Continuous learning is a must for any developer so that the person stays updated to the latest technologies.
-        New technologies keep coming up all the time. We need to get our hands dirty in them. At the same time there will be areas that we haven’t touched for some time and hence have forgotten.<br />
-        Basics is the foundation. We need to get it right, because based on basics only we build forward.
-        After learning about a topic from a blog/book, we need to do prototyping, teach someone or create a documentation for self reference so that the concept stays clear.
-        Here I’m writing <a target="_blank" href="/posts/">posts</a> about the various topics that I have learned over time.
-        Also I'm sharing my <a target="_blank" href="/studies/">studies</a>, which helps me in quick revision of concepts or 
-        command in case I have forgotten it over time.
+        Hi there! I'm <a href="/home/about/boney-johns" target="_blank">Boney</a>. In this website, I'm adding my posts and studies on various technical concepts. Hope it will help you.
     </div>
 </div>
-
-<div class="row" style="margin-bottom:15px;">
+<div class="row row-bottom-margin">
     <div class="col-md-12">
-        <span>Some food for thought: :)</span>
+        Software industry keeps evolving all the time. And as a developer working in the industry, it is our responsibility to stay updated.
+        Progressive learning is the key. Learning also helps us to remain sharp and solve problems easily.<br />
+        Learning can be done by reading, watching videos or listening to podcasts. But nothing beats learning by practising.
+        It also helps if we teach about or create a post on the concept so that the concept remains clear.
+        Here I’m writing <a target="_blank" href="/posts/">posts</a> about the various topics that I have learned over time.
+        Also sharing my <a target="_blank" href="/studies/">studies</a>, which helps in easy lookup of concepts/commands.<br />
+        And <a href="https://github.com/bnyjohns/codingsoldier" target="_blank">here</a> is the source code for this site.
     </div>
 </div>
 
 <div class="row">
-    <div class="col-md-4">
-        <span>C# .Net</span>
-        <ol>
-            <li>
-                This one may sound way too naive, unless you have really thought about it.
-                class A {}
-                void Main {A ob = new A();}
-                what is ob?
-            </li>
-            <li>
-                String is a Reference type right? If so, will the value string variable change reflect if it is passed as a parameter to a method,
-                without the 'ref' keyword? Why ?
-                void Main()
-                {
-                string a = "hello";
-                ChangeValue(a);
-                Console.WriteLine(a);
-                }
-                void ChangeValue(string input)
-                {
-                input = "hi";
-                }
-            </li>
-            <li>
-                Provide an instance where decorator pattern is used in Dot Net Framework Library ?
-            </li>
-            <li>
-                Dictionary or HashTable is faster? Why ?
-            </li>
-            <li>
-                What is method inlining ?
-            </li>
-            <li>
-                What is meant by coding against interfaces ?
-            </li>
-        </ol>
+    <div class="col-md-12">
+        <b>Update</b>
     </div>
-    <div class="col-md-4">
-        <span>ASP.Net</span>
-        <ol>
-            <li>
-                You have an Aspx page.<br /> Page has textbox control and a button control.<br />
-                You have viewstate turned off for the page and the textbox control.<br />
-                Page loads the first time. You enter some text into the textbox and you click submit button.<br />
-                After the page posts back, will the text entered in the textbox be retained or not?
-            </li>
-            <li>
-                In which environment would an ASP.Net Core site run fast? In a Linux server or in a Windows server ?
-            </li>
-            <li>
-                How is the request pipeline of ASP.Net Core different from previous site versions of ASP.Net ?
-            </li>
-        </ol>
+</div>
+<div class="row row-bottom-margin">
+    <div class="col-md-12">
+        I created this website years back in 2015.
+        After having seen and worked on numerous websites, it was a wish to create a website on my own and deploy it in production.
+        Actually it helped me in many ways:
+        <ul>
+            <li>To learn the DevOps aspect of websites. Domain name purchase, Hosting, Webservers, NameServers etc</li>
+            <li>Brand of my own, where I can post my learnings and findings</li>
+            <li>As a project that I can use to migrate between different technologies and in turn learn that technology</li>
+        </ul>
+        Of late, I don't do much updates to this site. I mostly publish my updates to <a href="https://github.com/bnyjohns" target="_blank">GitHub</a> which I find much easier to maintain.
     </div>
-    <div class="col-md-4">
-        <span>JavaScript</span>
-        <ol>
-            <li>
-                What feature in JavaScript makes currying possible ?
-            </li>
-            <li>
-                What exactly is "__proto" property of an object ?
-            </li>
-            <li>
-                Lexial scoping and closure both are in play here. What would be the value printed out to console ?
-
-                function outerFunc(){
-                var a = 1;
-                var printA = function(){
-                console.log(a);
-                }
-                var incrementA = function(){
-                a++;
-                }
-                return {printA, incrementA};
-                }
-
-                let {printA, incrementA} = outerFunc();
-                incrementA();
-                printA();                
-            </li>
-        </ol>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <b>Evolution</b>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <ul class="row-bottom-margin">
+            <li>ASP.NET MVC 5 hosted on IIS in Windows EC2 instance. Database was SQL server DB <i>(Initial version)</i></li>
+            <li>Node.js (express) and jade template engine hosted on Windows EC2 instance. Database was MongoDb</li>
+            <li>React 15 and Node.js (express) hosted on Windows EC2 instance. Database was MongoDb</li>
+            <li>ASP.NET CORE 2.0 hosted on AWS Linux EC2 instance. Database was SQLite. Kestrel server and Nginx as RP</li>
+            <li>ASP.NET CORE 2.2 hosted on AWS Lambda. Database is SQLite <i>(Latest version)</i></li>
+        </ul>
+        <b>Notable mentions</b>
+        <ul>
+            <li><a href="https://hub.docker.com/r/bnyjohns/codingsoldier-with-nginx/" target="_blank">Docker Image</a> for CodingSoldier</li>
+            <li>Hosting in Azure Web App</li>
+        </ul>
     </div>
 </div>

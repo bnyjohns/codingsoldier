@@ -30,16 +30,16 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "index", "home")</li>
+                    <li>@Html.ActionLink("Studies", "index", "studies")</li>
                     <li>@Html.ActionLink("Posts", "index", "posts")</li>
-                    <li>@Html.ActionLink("Studies", "index", "studies")</li> 
-                    <li>@Html.ActionLink("Technologies", "technologies", "home")</li>
-                    <li><a href="/home/about/boney-johns">About</a></li>            
+                    <li>@*@Html.ActionLink("Technologies", "technologies", "home")*@</li>
+                    <li><a href="/home/about/boney-johns">About</a></li>
                     @if (User.IsInRole("Admin"))
                     {
                         <li>@Html.ActionLink("Roles", "Index", "Roles")</li>
                     }
                 </ul>
-                @Html.Partial("_LoginPartial")
+                @*@Html.Partial("_LoginPartial")*@
             </div>
         </div>
     </div>
