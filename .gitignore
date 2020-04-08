@@ -3,3 +3,4 @@ CodingSoldier/bin/*
 CodingSoldier/obj/*
 .vs/*
 CodingSoldier/Properties/PublishProfiles/FolderProfile.pubxml.user
+CodingSoldier/CodingSoldier.csproj.user

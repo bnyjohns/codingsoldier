@@ -10,7 +10,7 @@ namespace CodingSoldier.Controllers
     public class CertificationsController : Controller
     {
         string webRootPath;
-        public CertificationsController(IHostingEnvironment env) => webRootPath = env.WebRootPath;
+        public CertificationsController(IWebHostEnvironment env) => webRootPath = env.WebRootPath;
 
         public async Task<IActionResult> Index(string fileName)
         {

@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using CodingSoldier.Core.Entities;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
@@ -14,6 +10,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using AutoMapper;
+using Microsoft.Extensions.Hosting;
 
 namespace CodingSoldier.App_Start
 {
@@ -30,7 +27,9 @@ namespace CodingSoldier.App_Start
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc();
+            services.AddControllers(); //API Controllers
+            services.AddControllersWithViews();
+            services.AddRazorPages();
             services.AddAutoMapper(typeof(MappingProfile));
             services.AddDbContext<CodingSoldierDbContext>();
             services.AddDbContext<IdentityDbContext<ApplicationUser>>(OptionsAction);
@@ -71,7 +70,7 @@ namespace CodingSoldier.App_Start
             {
                 // Cookie settings
                 options.Cookie.HttpOnly = true;
-                options.Cookie.Expiration = TimeSpan.FromDays(150);
+                options.ExpireTimeSpan = TimeSpan.FromDays(150);
                 options.LoginPath = "/Account/Login"; // If the LoginPath is not set here, ASP.NET Core will default to /Account/Login
                 options.LogoutPath = "/Account/Logout"; // If the LogoutPath is not set here, ASP.NET Core will default to /Account/Logout
                 options.AccessDeniedPath = "/Account/AccessDenied"; // If the AccessDeniedPath is not set here, ASP.NET Core will default to /Account/AccessDenied
@@ -85,13 +84,12 @@ namespace CodingSoldier.App_Start
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILoggerFactory loggerFactory)
         {
             Seeder.Seed();
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseBrowserLink();
             }
             else
             {                
@@ -101,25 +99,16 @@ namespace CodingSoldier.App_Start
             loggerFactory.AddLambdaLogger(Configuration.GetLambdaLoggerOptions());
 
             app.UseStaticFiles();
-
+            app.UseRouting();
             app.UseAuthentication();
+            app.UseAuthorization();
 
-            app.UseMvc(routes =>
+            app.UseEndpoints(endpoints =>
             {
-                routes.MapRoute(
-                    name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
-            });
-
-            app.UseMvc(routes =>
-            {
-                routes.MapRoute(
-                    name: "certifications",
-                    template: "{controller=Certifications}/{fileName?}",
-                    defaults: new
-                    {
-                        Action = "Index"
-                    });
+                endpoints.MapControllerRoute(name: "certifications", 
+                                                pattern: "certifications/{*fileName}", 
+                                                defaults: new { controller = "Certifications", action = "Index" });
+                endpoints.MapDefaultControllerRoute();
             });
         }
     }

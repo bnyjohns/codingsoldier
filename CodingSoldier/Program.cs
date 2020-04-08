@@ -13,7 +13,6 @@ namespace CodingSoldier
 
         public static IWebHost BuildWebHost(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
-                .UseKestrel()
                 .UseStartup<Startup>()
                 .UseUrls("http://*:2350")
                 .UseIISIntegration()
