@@ -1,4 +1,5 @@
-# codingsoldier
+### CodingSoldier ###
 
-coding soldier in ASP.NET Core 2.2
-SQL server DB migrated to SQLite
+* CodingSoldier written in ASP.NET Core 3.1
+* Database used is SQLite
+
