@@ -28,7 +28,10 @@ namespace CodingSoldier.App_Start
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers(); //API Controllers
-            services.AddControllersWithViews().AddRazorRuntimeCompilation();
+            var mvcBuilder = services.AddControllersWithViews();
+#if DEBUG
+            mvcBuilder.AddRazorRuntimeCompilation();
+#endif
             services.AddRazorPages();
             services.AddAutoMapper(typeof(MappingProfile));
             services.AddDbContext<CodingSoldierDbContext>();
