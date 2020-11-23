@@ -1,7 +1,6 @@
-﻿using Amazon.Lambda.APIGatewayEvents;
-using CodingSoldier.Core.Entities;
-using Microsoft.AspNetCore.Hosting;
+﻿using CodingSoldier.Core.Entities;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using System.Net;
 using System.Threading.Tasks;
 
@@ -9,8 +8,8 @@ namespace CodingSoldier.Controllers
 {
     public class CertificationsController : Controller
     {
-        string webRootPath;
-        public CertificationsController(IWebHostEnvironment env) => webRootPath = env.WebRootPath;
+        private readonly IConfiguration _configuration;
+        public CertificationsController(IConfiguration configuration) => _configuration = configuration;
 
         public async Task<IActionResult> Index(string fileName)
         {
@@ -21,7 +20,9 @@ namespace CodingSoldier.Controllers
             }
             else
             {
-                var uri = $"http://www.codingsoldier.com/certifications/{fileName}";
+                var uri = $"{_configuration["CertificatesBlobUrl"]}{fileName}";
+                if (!uri.EndsWith(".pdf"))
+                    uri += ".pdf";
                 HttpWebRequest httpWebRequest = WebRequest.Create(uri) as HttpWebRequest;
                 var response = await httpWebRequest.GetResponseAsync();
                 var stream = response.GetResponseStream();
